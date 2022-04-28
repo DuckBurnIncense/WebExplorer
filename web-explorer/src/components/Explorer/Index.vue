@@ -1,40 +1,29 @@
 <style lang="less" scoped>
-	.root {
+	.root-explorer {
 		background-color: #fff;
-		
-	    .header {
+		display: flex;
+		flex-direction: column;
 
-		}
 		.body {
-			display: flex;
-			flex-direction: column;
-
-			.left {
-				width: 20%;
-
-			}
-			.right {
-				width: 80%;
-			}
+			flex: 1;
 		}
 	}
 </style>
 
 <template>
-	<div class="root">
+	<div class="root-explorer">
 		<e-header class="header" />
-		<div class="body">
-
-		</div>
+		<e-body   class="body"   />
 	</div>
 </template>
 
 <script>
-	import EHeader from "./Main/Header";
+	import EHeader from "./Main/Header/";
+	import EBody from "./Main/Body/";
 	
 	export default {
 		name: 'Explorer',
-		components: {EHeader},
+		components: {EHeader, EBody},
 		data() {
 			return {
 				

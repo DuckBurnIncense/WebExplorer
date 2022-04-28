@@ -4,9 +4,9 @@ module.exports = defineConfig({
 	lintOnSave:false,
 	devServer:{
 		proxy:{
-			'/api':{
-				target: 'http://192.168.1.99:88/WebExplorer/api',
-				pathRewrite: {'^/api': ''}
+			'api\.php':{
+				target: 'http://192.168.1.99:88/WebExplorer/web-explorer/',
+				//pathRewrite: {'^(api\.php)': ''}
 			}
 		}
 	}
