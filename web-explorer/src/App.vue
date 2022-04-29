@@ -11,6 +11,24 @@
 		margin: 0;
 		box-sizing: border-box;
 	}
+	/*滚动条*/
+	::-webkit-scrollbar
+	{
+		width: 6px;
+		background-color: #171717;
+	}
+	/*滚动条轨道*/
+	::-webkit-scrollbar-track
+	{
+		border-radius: 10px;
+		background-color: #171717;
+	}
+	/*滑块*/
+	::-webkit-scrollbar-thumb
+	{
+		border-radius:10px;
+		background-color:#959595;
+	}
 </style>
 
 <style scoped>

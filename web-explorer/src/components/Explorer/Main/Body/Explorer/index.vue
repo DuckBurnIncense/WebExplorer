@@ -7,7 +7,7 @@
 
 <template>
 	<div class="root-explorer">
-
+		Explorer Here
 	</div>
 </template>
 

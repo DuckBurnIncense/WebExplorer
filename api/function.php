@@ -11,9 +11,18 @@ function isJSON($string) {
 	}
 }
 
-function _die($m) {
+function _die($m = '') {
 	die(json_encode([
 		'ok'=> 0,
 		'message'=> $m
 	], JSON_UNESCAPED_UNICODE));
+}
+
+function requireJson($JSON, $arr) {
+	foreach ($arr as $item) {
+		if (!isset($JSON[$item])) {
+			_die('Require JSON data: ' . $item);
+		}
+	}
+	return true;
 }

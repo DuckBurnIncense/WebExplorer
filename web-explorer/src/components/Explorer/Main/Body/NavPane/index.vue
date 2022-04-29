@@ -3,22 +3,24 @@
 		background-color: #191919;
 		border: 1px solid #2b2b2b;
 		padding-top: 10px;
+		overflow: auto;
+		
 	}
 </style>
 
 <template>
 	<div class="root-nav-pane">
-		<block icon="folder" name="Root99999999999999999999999999999999999999999999" />
+		<e-item :isDir="1" name="Root" path="/" />
 	</div>
 </template>
 
 <script>
-	import Block from './Block';
+	import EItem from './Item';
 	
 	export default {
 		//Navigation pane
 		name: 'NavPane',
-		components: {Block},
+		components: {EItem},
 		data() {
 			return {
 				

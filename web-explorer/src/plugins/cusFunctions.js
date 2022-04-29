@@ -27,6 +27,11 @@ export default {
 					var s = time.getSeconds();
 					return y + '-' + add0(m) + '-' + add0(d) + ' ' + add0(h) + ':' + add0(min) + ':' + add0(s);
 				},
+			},
+			file: {
+				getFileType(val){
+					return val.substring(val.lastIndexOf(".") + 1);
+			  	}
 			}
 		}
 	}

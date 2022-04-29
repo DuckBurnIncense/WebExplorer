@@ -2,7 +2,8 @@
 	.root-body {
 		display: flex;
 		flex-direction: row;
-		// height: 100%;
+		height: 100%;
+		min-height: 0px;
 
 		.nav-pane {
 			width: 200px;
@@ -11,6 +12,7 @@
 		.explorer {
 			flex: 1;
 			height: 100%;
+			overflow: auto;
 		}
 	}
 </style>
