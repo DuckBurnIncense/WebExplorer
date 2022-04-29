@@ -49,9 +49,9 @@
 <template>
 	<div class="root">
 		<div class="nav">
-			<div class="item" :class="getTabingTabClass(1)" @click="changeTabingTab(1)" tabindex="1">主页</div>
-			<div class="item" :class="getTabingTabClass(2)" @click="changeTabingTab(2)" tabindex="2">权限</div>
-			<div class="item" :class="getTabingTabClass(3)" @click="changeTabingTab(3)" tabindex="3">查看</div>
+			<div class="item" :class="getTabingTabClass(1)" @click="changeTabingTab(1)" @keyup.enter="changeTabingTab(1)" tabindex="0">主页</div>
+			<div class="item" :class="getTabingTabClass(2)" @click="changeTabingTab(2)" @keyup.enter="changeTabingTab(2)" tabindex="0">权限</div>
+			<div class="item" :class="getTabingTabClass(3)" @click="changeTabingTab(3)" @keyup.enter="changeTabingTab(3)" tabindex="0">查看</div>
 			<span class="hide-tab" :class="showTab ? 'show' : 'hide'" @click="showTab = !showTab"></span>
 		</div>
 		<div class="tabs">

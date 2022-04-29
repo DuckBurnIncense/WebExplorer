@@ -48,7 +48,7 @@
 
 <template>
 	<div class="root-nav-pane-block">
-		<div class="block" @click="more()" tabindex="0">
+		<div class="block" @click="more()" @keyup.enter="more()" tabindex="0">
 			<span class="more" :class="isDir ? (isOpen ? 'open' : 'close') : ''"></span>
 			<img :src="iconPath" class="icon" />
 			<span class="name">{{name}}</span>
@@ -93,7 +93,7 @@
 		},
 		computed: {
 			iconPath() {
-				
+
 				return require('@/assets/shell32/' + (this.isDir ? 'folder' : 'file') + '.png');
 			}
 		},

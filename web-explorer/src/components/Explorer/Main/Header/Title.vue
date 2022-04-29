@@ -38,9 +38,9 @@
 		<img class="icon" src="@/assets/shell32/disk.png" />
 		<p class="title-content">Z:\WebExplorer\web-explorer\src\assets\</p>
 		<div class="exit-buttons">
-			<span class="btn">–</span>
-			<span class="btn">▢</span>
-			<span class="btn close-btn">⨉</span>
+			<span class="btn" tabindex="0">–</span>
+			<span class="btn" tabindex="0">▢</span>
+			<span class="btn close-btn" tabindex="0">⨉</span>
 		</div>
 	</div>
 </template>

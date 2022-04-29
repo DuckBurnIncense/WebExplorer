@@ -50,9 +50,9 @@
 
 <template>
 	<div class="root">
-		<span class="btn">←</span>
-		<span class="btn">→</span>
-		<span class="btn">↑</span>
+		<span class="btn" tabindex="0">←</span>
+		<span class="btn" tabindex="0">→</span>
+		<span class="btn" tabindex="0">↑</span>
 		<div class="address-bar">
 			<img class="icon" src="@/assets/shell32/folder.png" />
 			<div class="path-part">2333</div>
