@@ -31,7 +31,7 @@ export default new Vuex.Store({
             ico: 'img',
             dbi: '50058'
         },
-        path: 'Root/2333/23/23232'
+        path: ''
     },
     getters: {
     },
@@ -42,6 +42,7 @@ export default new Vuex.Store({
     },
     actions: {
         changePath(context, v) {
+            document.title = 'WebExplorer://' + v
             context.commit('CHANGE_PATH', v);
         }
     },
