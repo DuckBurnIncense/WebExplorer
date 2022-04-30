@@ -11,7 +11,7 @@
 
 <template>
 	<div class="root-nav-pane">
-		<e-item :isDir="1" name="Root" path="/" />
+		<e-item :isDir="1" name="Root" path="Root/" />
 	</div>
 </template>
 

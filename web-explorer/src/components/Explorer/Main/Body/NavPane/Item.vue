@@ -110,7 +110,7 @@
 					this.isOpen = !this.isOpen;
 					this.$ajax.post({
 						path: this.path
-					}, 'http://192.168.1.99:8080/api.php?p=getFileList', v => {
+					}, '/api.php?p=getFileList', v => {
 						this.childrenData = v.data.sort((a, b) => {
 							return b.isDir - a.isDir;
 						});

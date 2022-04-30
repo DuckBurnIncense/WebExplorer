@@ -30,7 +30,7 @@
 			}
 		},
 		mounted() {
-			this.$store.dispatch('changePath', 'Root/');
+			
 		}
 	}
 </script>

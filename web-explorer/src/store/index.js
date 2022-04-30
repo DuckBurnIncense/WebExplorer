@@ -42,6 +42,8 @@ export default new Vuex.Store({
     },
     actions: {
         changePath(context, v) {
+            if (v.charAt(0) == '/') v = v.substr(1);
+            v = v.replaceAll('//', '/');
             document.title = 'WebExplorer://' + v
             context.commit('CHANGE_PATH', v);
         }

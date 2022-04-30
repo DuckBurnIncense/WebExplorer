@@ -3,6 +3,7 @@
 		display: flex;
 		color: white;
 		cursor: pointer;
+		height: fit-content;
 
 		.big {
 			flex-direction: column;

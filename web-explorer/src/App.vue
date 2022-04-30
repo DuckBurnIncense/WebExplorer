@@ -15,6 +15,7 @@
 	::-webkit-scrollbar
 	{
 		width: 6px;
+		height: 6px;
 		background-color: #171717;
 	}
 	/*滚动条轨道*/
@@ -42,7 +43,7 @@
 </style>
 
 <template>
-	<div id="app">
+	<div id="app" onselectstart="return false">
 		<explorer class="explorer" />
 	</div>
 </template>
