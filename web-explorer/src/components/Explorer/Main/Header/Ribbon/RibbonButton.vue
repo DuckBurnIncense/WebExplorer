@@ -33,7 +33,7 @@
 </style>
 
 <template>
-	<div class="root" :class="sizeClass" tabindex="0">
+	<div class="root" :class="sizeClass" tabindex="0" @click="$emit('emit')" @keyup.enter="$emit('emit')">
 		<img :src="iconPath" class="icon" />
 		<span>{{name}}</span>
 	</div>

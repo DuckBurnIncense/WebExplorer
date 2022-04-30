@@ -6,8 +6,14 @@
 		min-height: 0px;
 
 		.nav-pane {
-			width: 200px;
 			height: 100%;
+		}
+		.resize-nav-pane {
+			cursor: e-resize;
+			width: 0px;
+			border-left: 5px solid #2b2b2b;
+			height: 100%;
+			// background-color: #2b2b2b;
 		}
 		.explorer {
 			flex: 1;
@@ -18,8 +24,13 @@
 </style>
 
 <template>
-	<div class="root-body">
-		<nav-pane class="nav-pane" />
+	<div class="root-body" @mouseup="resizeing = 0" @mousemove="resizeNavPane">
+		<nav-pane v-if="showNavPane" class="nav-pane" :style="{width: nevPaneWidth}" />
+		<div 
+			v-if="showNavPane"
+			class="resize-nav-pane" 
+			@mousedown="resizeing = 1" 
+		></div>
 		<explorer class="explorer" />
 	</div>
 </template>
@@ -33,8 +44,19 @@
 		components: {NavPane, Explorer},
 		data() {
 			return {
-				
+				resizeing: 0,
+				nevPaneWidth: '200px',
+				showNavPane: 1
 			}
+		},
+		methods: {
+			resizeNavPane(e) {
+				if (!this.resizeing || e.clientX < 100 || e.clientX > 600) return;
+				this.nevPaneWidth = (e.clientX - 1) + 'px';
+			}
+		},
+		mounted() {
+			this.$bus.$on('closeNavPane', () => {this.showNavPane = !this.showNavPane;});
 		}
 	}
 </script>

@@ -46,6 +46,7 @@
 
 		<template v-if="tab == 3">
 			<ribbon-button size="big" icon="cloud" name="省流模式" />
+			<ribbon-button size="big" icon="nav-pane" name="预览窗格" @emit="$bus.$emit('closeNavPane')" />
 		</template>
 	</div>
 </template>
@@ -61,6 +62,9 @@
 			return {
 				
 			}
+		},
+		methods: {
+			
 		}
 	}
 </script>

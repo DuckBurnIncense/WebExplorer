@@ -4,13 +4,13 @@
 		display: flex;
 		flex-direction: column;
 		// align-items: center;
-		cursor: pointer;
 
 		.block {
 			display: flex;
 			align-items: center;
 			height: 28px;
 			flex-wrap: nowrap;
+			cursor: pointer;
 
 			.more {
 				margin: 0px 5px;
@@ -51,7 +51,7 @@
 		<div class="block" @click="more()" @keyup.enter="more()" tabindex="0">
 			<span class="more" :class="isDir ? (isOpen ? 'open' : 'close') : ''"></span>
 			<img :src="iconPath" class="icon" />
-			<span class="name">{{name}}</span>
+			<span class="name" :title="name">{{name}}</span>
 		</div>
 		<div class="children" v-if="isOpen">
 			<e-item 
@@ -93,8 +93,40 @@
 		},
 		computed: {
 			iconPath() {
-
-				return require('@/assets/shell32/' + (this.isDir ? 'folder' : 'file') + '.png');
+				const supportType = {
+					ppt: 'doc',
+					pptx: 'doc',
+					doc: 'doc',
+					docx: 'doc',
+					xls: 'doc',
+					xlsx: 'doc',
+					exe: 'exe',
+					mp4: 'video',
+					zip: 'zip',
+					rar: 'zip',
+					// html: 'html',
+					txt: 'txt',
+					css: 'txt',
+					js: 'txt',
+					php: 'txt',
+					mp3: 'music',
+					wav: 'music',
+					m4a: 'music',
+					jpg: 'img',
+					png: 'img',
+					jpeg: 'img',
+					webp: 'img',
+					ico: 'img',
+					dbi: '50058'
+				};
+				let fname = 'file';
+				if (this.isDir) {
+					fname = 'folder';
+				} else {
+					let type = this.getFileType(this.name);
+					fname = supportType[type] != undefined ? supportType[type] : 'file'
+				}
+				return require('@/assets/shell32/' + fname + '.png');
 			}
 		},
 		methods: {
@@ -111,7 +143,7 @@
 				}
 			},
 			getFileType(v){
-  				return this.cusFunctions.file.getFileType(v);
+  				return this.$cusFunctions.file.getFileType(v);
 			}
 		}
 	}

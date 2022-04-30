@@ -2,6 +2,7 @@
 	.root-nav-pane {
 		background-color: #191919;
 		border: 1px solid #2b2b2b;
+		border-right: 0;
 		padding-top: 10px;
 		overflow: auto;
 		
