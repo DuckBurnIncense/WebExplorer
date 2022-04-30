@@ -24,7 +24,7 @@
 			v-for="data in datas" 
 			:key="data.name" 
 			:data="data" 
-			@dblclick="changePath(data)"
+			@emit="changePath(data)"
 		/>
 		<p v-if="datas.data == false" class="empty-tip">文件夹为空</p>
 	</div>

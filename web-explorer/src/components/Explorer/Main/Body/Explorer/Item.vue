@@ -27,7 +27,7 @@
 </style>
 
 <template>
-	<div class="root" @dblclick="$emit('dblclick')">
+	<div class="root" @dblclick="$emit('emit')" @keyup.enter="$emit('emit')" tabindex="0">
 		<img class="icon" :src="iconPath" />
 		<span class="name">{{data.name}}</span>
 	</div>
