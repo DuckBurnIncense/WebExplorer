@@ -23,6 +23,14 @@
 	}
 	.root:hover {
 		background-color: #4d4d4d;
+
+		.name {
+			white-space: normal;
+			text-overflow: initial;
+			overflow: auto;
+			max-height: 3em;
+			word-break: break-all;
+		}
 	}
 </style>
 
