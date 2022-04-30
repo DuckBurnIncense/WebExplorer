@@ -36,7 +36,7 @@
 <template>
 	<div class="root">
 		<img class="icon" src="@/assets/shell32/disk.png" />
-		<p class="title-content">Z:\WebExplorer\web-explorer\src\assets\</p>
+		<p class="title-content">{{$store.state.path}}</p>
 		<div class="exit-buttons">
 			<span class="btn" tabindex="0">–</span>
 			<span class="btn" tabindex="0">▢</span>

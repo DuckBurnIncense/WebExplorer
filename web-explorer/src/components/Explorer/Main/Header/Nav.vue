@@ -33,12 +33,13 @@
 			.path-part::before {
 				content: '>';
 				font-size: 0.8em;
-				margin: 0px 5px;
+				margin-right: 5px;
 			}
 			.path-part {
 				display: flex;
 				align-items: center;
 				height: 100%;
+				padding: 0 5px;
 				cursor: pointer;
 			}
 			.path-part:hover {
@@ -55,9 +56,14 @@
 		<span class="btn" tabindex="0">↑</span>
 		<div class="address-bar">
 			<img class="icon" src="@/assets/shell32/folder.png" />
-			<div class="path-part">2333</div>
-			<div class="path-part">2333</div>
-			<div class="path-part">2333</div>
+			<div 
+				class="path-part" 
+				v-for="(p, index) in path" 
+				:key="index" 
+				@click="changePath(index)"
+			>
+				{{p}}
+			</div>
 		</div>
 	</div>
 </template>
@@ -71,6 +77,23 @@
 		data() {
 			return {
 				
+			}
+		},
+		computed: {
+			path() {
+				let pathText = this.$store.state.path;
+				let p = pathText.split('/');
+				if (p[p.length - 1] == '') {p.pop();}
+				return p;
+			}
+		},
+		methods: {
+			changePath(v) {
+				let p = '';
+				for (let i = 0; i <= v; i++) {
+					p += this.path[i] + '/';
+				}
+				this.$store.dispatch('changePath', p);
 			}
 		}
 	}
