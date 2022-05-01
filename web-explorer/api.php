@@ -7,7 +7,7 @@ header('X-Powered-By: DBI/1.0.0');
 $P = __DIR__ . '/../api/' . $_GET['p'] . '.php';
 if (file_exists($P)) {
 	$JSON = file_get_contents('php://input');
-	isJSON($JSON) ? $JSON = json_decode($JSON, true) : _die('JSON ERROR');
+	$JSON = isJSON($JSON) ? json_decode($JSON, true) : (isset($_GET['data']) ? json_decode($_GET['data'], true) : _die('JSON ERROR'));
 	$R = require $P;
 	echo json_encode([
 		'ok'=> 1,

@@ -1,5 +1,5 @@
 <style lang="less" scoped>
-	.root {
+	.root-item {
 		display: flex;
 		flex-direction: column;
 		padding: 10px;
@@ -21,7 +21,7 @@
 			max-width: 5em;
 		}
 	}
-	.root:hover {
+	.root-item:hover {
 		background-color: #4d4d4d;
 
 		.name {
@@ -35,18 +35,33 @@
 </style>
 
 <template>
-	<div class="root" @dblclick="$emit('emit')" @keyup.enter="$emit('emit')" tabindex="0">
+	<div 
+		class="root-item" 
+		@dblclick="$emit('emit')" 
+		@keyup.enter="$emit('emit')" 
+		tabindex="0"
+		@contextmenu.prevent.stop="showContextMenu" 
+	>
 		<img class="icon" :src="iconPath" />
 		<span class="name">{{data.name}}</span>
+		<context-menu 
+			v-show="contextMenu.show" 
+			:x="contextMenu.x" 
+			:y="contextMenu.y" 
+			:type="data.isDir ? 'folder' : 'file'" 
+			:data="data" 
+			@emit="contextMenuEmit"
+		/>
+		<iframe :src="downloadSrc" frameborder="0" style="display: none;" />
 	</div>
 </template>
 
 <script>
-	// import  from '';
+	import ContextMenu from './ContextMenu';
 	
 	export default {
 		name: 'Item',
-		// components: {},
+		components: {ContextMenu},
 		props: {
 			data: {
 				required: 1,
@@ -55,7 +70,12 @@
 		},
 		data() {
 			return {
-				
+				contextMenu: {
+					x: 0,
+					y: 0,
+					show: 0
+				},
+				downloadSrc: ''
 			}
 		},
 		computed: {
@@ -69,7 +89,27 @@
 					fname = supportType[type] != undefined ? supportType[type] : 'file'
 				}
 				return require('@/assets/shell32/' + fname + '.png');
+			},
+			path() {
+				return this.$store.state.path + '/' + this.data.name
 			}
+		},
+		methods: {
+			showContextMenu(e) { 
+				this.contextMenu.x = e.x;
+				this.contextMenu.y = e.y;
+				this.contextMenu.show = 1;
+			},
+			contextMenuEmit(t) {
+				if (t == 'open') {
+					this.$emit('emit');
+				} else if (t == 'download') {
+					this.downloadSrc = `/api.php?p=downloadFile&data={"file":"${this.path}"}`
+				}
+			}
+		},
+		mounted() {
+			document.addEventListener('mouseup', () => {this.contextMenu.show = 0;});
 		}
 	}
 </script>

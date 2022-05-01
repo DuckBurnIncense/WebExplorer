@@ -30,6 +30,7 @@
 			<div class="divide-line"></div>
 			<div class="button-row">
 				<ribbon-button size="small" icon="properties" name="属性" />
+				<ribbon-button size="small" icon="file" name="新建文件" />
 				<ribbon-button size="small" icon="folder" name="新建文件夹" />
 			</div>
 			<div class="divide-line"></div>

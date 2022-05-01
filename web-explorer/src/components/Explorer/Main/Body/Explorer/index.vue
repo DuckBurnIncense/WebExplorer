@@ -18,7 +18,7 @@
 </style>
 
 <template>
-	<div class="root-explorer">
+	<div class="root-explorer" @contextmenu.prevent.stop="showContextMenu">
 		<item 
 			class="item" 
 			v-for="data in datas" 
@@ -27,19 +27,32 @@
 			@emit="changePath(data)"
 		/>
 		<p v-if="datas.data == false" class="empty-tip">文件夹为空</p>
+		<context-menu 
+			v-show="contextMenu.show" 
+			:x="contextMenu.x" 
+			:y="contextMenu.y" 
+			type="explorer" 
+			@emit="contextMenuEmit"
+		/>
 	</div>
 </template>
 
 <script>
 	import Item from './Item';
+	import ContextMenu from './ContextMenu';
 	
 	export default {
 		name: 'Explorer',
-		components: {Item},
+		components: {Item, ContextMenu},
 		data() {
 			return {
 				path: this.$store.state.path,
-				datas: {}
+				datas: {},
+				contextMenu: {
+					x: 0,
+					y: 0,
+					show: 0
+				}
 			}
 		},
 		created() {
@@ -68,7 +81,21 @@
 						console.error('Failed: ', v);
 					}
 				});
+			},
+			showContextMenu(e) { 
+				this.contextMenu.x = e.x;
+				this.contextMenu.y = e.y;
+				this.contextMenu.show = 1;
+			},
+			contextMenuEmit(t) {
+				console.log(t);
+				if (t == 'ref') {
+					this.changePathSendApi(this.path);
+				}
 			}
+		},
+		mounted() {
+			document.addEventListener('mouseup', () => {this.contextMenu.show = 0;});
 		}
 	}
 </script>
