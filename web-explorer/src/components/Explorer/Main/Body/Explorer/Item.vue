@@ -53,15 +53,19 @@
 			@emit="contextMenuEmit"
 		/>
 		<iframe :src="downloadSrc" frameborder="0" style="display: none;" />
+		<popup v-if="showProperty" :title="path" @close="hideProperty">
+
+		</popup>
 	</div>
 </template>
 
 <script>
 	import ContextMenu from './ContextMenu';
+	import Popup from '../Popup/';
 	
 	export default {
 		name: 'Item',
-		components: {ContextMenu},
+		components: {ContextMenu, Popup},
 		props: {
 			data: {
 				required: 1,
@@ -75,7 +79,8 @@
 					y: 0,
 					show: 0
 				},
-				downloadSrc: ''
+				downloadSrc: '',
+				showProperty: 0
 			}
 		},
 		computed: {
@@ -106,10 +111,15 @@
 					this.$emit('emit');
 				} else if (t == 'download') {
 					this.downloadSrc = `/api.php?p=downloadFile&data={%22file%22:%22${this.path}%22}`
+				} else if (t == 'property') {
+					this.showProperty = 1;
 				}
 			},
 			open() {
 				this.contextMenuEmit(this.data.isDir ? 'open' : 'download');
+			},
+			hideProperty() {
+				this.showProperty = 0;
 			}
 		},
 		mounted() {

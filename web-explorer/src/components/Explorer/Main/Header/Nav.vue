@@ -93,7 +93,7 @@
 				for (let i = 0; i <= v; i++) {
 					p += this.path[i] + '/';
 				}
-				this.$store.dispatch('changePath', p);
+				// this.$store.dispatch('changePath', p);
 				this.$bus.$emit('changePath', p);
 			}
 		}

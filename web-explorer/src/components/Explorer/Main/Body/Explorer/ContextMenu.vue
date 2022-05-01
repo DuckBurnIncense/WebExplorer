@@ -40,7 +40,7 @@
 			<div class="item" @click="e('rename')">重命名</div>
 			<div class="item" @click="e('del')">删除</div>
 		</template>
-		<div class="item" @click="e('property')">属性</div>
+		<div v-if="type != 'explorer'" class="item" @click="e('property')">属性</div>
 	</div>
 </template>
 

@@ -31,13 +31,20 @@ export default new Vuex.Store({
             ico: 'img',
             dbi: '50058'
         },
-        path: ''
+        path: '',
+        historyPath: [],
+        allHistoryPath: []
     },
     getters: {
     },
     mutations: {
         CHANGE_PATH(state, v) {
             state.path = v;
+            state.historyPath.push(v);
+            state.allHistoryPath.push(v);
+        },
+        BACK_PATH(state) {
+            state.historyPath.pop();
         }
     },
     actions: {
@@ -46,6 +53,9 @@ export default new Vuex.Store({
             v = v.replaceAll('//', '/');
             document.title = 'WebExplorer://' + v
             context.commit('CHANGE_PATH', v);
+        },
+        backPath(context) {
+            context.commit('BACK_PATH');
         }
     },
     modules: {
