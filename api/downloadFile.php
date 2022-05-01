@@ -10,7 +10,7 @@ return
 
 */
 requireJson($JSON, ['file']);
-$filePath = __FILES_ROOT_DIR__ . '/' . $JSON['file'];
+$filePath = __FILES_ROOT_DIR__ . '/' . filterPath($JSON['file']);
 if (!file_exists($filePath) or !is_file($filePath)) return 0;
 
 $f = fopen($filePath, "rb");

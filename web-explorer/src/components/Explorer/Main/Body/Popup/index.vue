@@ -20,6 +20,9 @@
 
 			.name {
 				padding: 0px 5px;
+				white-space: nowrap;
+				overflow: hidden;
+				text-overflow: ellipsis;
 			}
 			.close {
 				border-radius: 0 5px 0 0;
@@ -35,7 +38,7 @@
 		}
 		.body {
 			border-radius: 0 0 5px 5px;
-			background-color: #f9f9f9;
+			background-color: #191919;
 			flex: 1;
 		}
 	}

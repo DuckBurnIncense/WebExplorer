@@ -43,7 +43,7 @@
 </style>
 
 <template>
-	<div id="app" onselectstart="return false">
+	<div id="app" onselectstart="return false" ondragstart="return false">
 		<explorer class="explorer" />
 	</div>
 </template>

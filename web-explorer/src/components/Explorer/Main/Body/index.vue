@@ -46,7 +46,7 @@
 			return {
 				resizeing: 0,
 				nevPaneWidth: '200px',
-				showNavPane: 1
+				showNavPane: 0
 			}
 		},
 		methods: {

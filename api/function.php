@@ -26,3 +26,7 @@ function requireJson($JSON, $arr) {
 	}
 	return true;
 }
+
+function filterPath($v) {
+	return preg_replace("/\.{2}/", '', $v);
+}
