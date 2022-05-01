@@ -37,8 +37,8 @@
 <template>
 	<div 
 		class="root-item" 
-		@dblclick="$emit('emit')" 
-		@keyup.enter="$emit('emit')" 
+		@dblclick="open()" 
+		@keyup.enter="open()" 
 		tabindex="0"
 		@contextmenu.prevent.stop="showContextMenu" 
 	>
@@ -101,11 +101,15 @@
 				this.contextMenu.show = 1;
 			},
 			contextMenuEmit(t) {
+				console.log(t);
 				if (t == 'open') {
 					this.$emit('emit');
 				} else if (t == 'download') {
-					this.downloadSrc = `/api.php?p=downloadFile&data={"file":"${this.path}"}`
+					this.downloadSrc = `/api.php?p=downloadFile&data={%22file%22:%22${this.path}%22}`
 				}
+			},
+			open() {
+				this.contextMenuEmit(this.data.isDir ? 'open' : 'download');
 			}
 		},
 		mounted() {
