@@ -85,7 +85,7 @@
 				if (this.data.isDir) {
 					fname = 'folder';
 				} else {
-					let type = this.$cusFunctions.file.getFileType(this.data.name);
+					let type = this.$cusFunctions.file.getFileType(this.data.name).toLowerCase();
 					fname = supportType[type] != undefined ? supportType[type] : 'file'
 				}
 				return require('@/assets/shell32/' + fname + '.png');
