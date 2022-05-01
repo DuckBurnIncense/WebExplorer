@@ -12,7 +12,10 @@
 
 		}
 		.empty-tip {
+			width: 100%;
 			text-align: center;
+			margin: 10px 0px;
+			cursor: default;
 		}
 	}
 </style>
@@ -26,7 +29,7 @@
 			:data="data" 
 			@emit="changePath(data)"
 		/>
-		<p v-if="datas.data == false" class="empty-tip">文件夹为空</p>
+		<p v-if="datas == false" class="empty-tip"> (此文件夹为空) </p>
 		<context-menu 
 			v-show="contextMenu.show" 
 			:x="contextMenu.x" 
@@ -47,7 +50,7 @@
 		data() {
 			return {
 				path: this.$store.state.path,
-				datas: {},
+				datas: [],
 				contextMenu: {
 					x: 0,
 					y: 0,

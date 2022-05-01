@@ -48,8 +48,12 @@
 
 <template>
 	<div class="root-nav-pane-block">
-		<div class="block" @click="more()" @keyup.enter="more()" tabindex="0">
-			<span class="more" :class="isDir ? (isOpen ? 'open' : 'close') : ''"></span>
+		<div class="block" tabindex="0" @click="changePath">
+			<span
+				@click.stop="more()" 
+				class="more" 
+				:class="isDir ? (isOpen ? 'open' : 'close') : ''"
+			></span>
 			<img :src="iconPath" class="icon" />
 			<span class="name" :title="name">{{name}}</span>
 		</div>
@@ -119,6 +123,9 @@
 			},
 			getFileType(v){
   				return this.$cusFunctions.file.getFileType(v);
+			},
+			changePath() {
+				if (this.isDir) this.$bus.$emit('changePath', this.path);
 			}
 		}
 	}
